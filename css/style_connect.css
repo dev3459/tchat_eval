@@ -1,0 +1,47 @@
+#contains{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#contains form{
+    margin: 1rem;
+    min-width: 20rem;
+    width: 40%;
+    height: 40vh;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+#contains form h2{
+    color: blue;
+    font-family: "Agency FB", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#contains form input{
+    padding: 0.4rem;
+}
+
+#contains form button {
+    margin-top: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    background-color: gray;
+    color: white;
+    border: 2px solid blue;
+    transition: all 0.2s linear;
+}
+
+#contains form button:hover{
+    color: blue;
+    background-color: rgba(128, 128, 128, 0.49);
+}
