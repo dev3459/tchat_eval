@@ -7,14 +7,17 @@ class DB{
     private ?PDO $dbLink;
 
     /**
-     * DbStatic constructor
+     * Addition of the return of the PDO connection in the dbLink variable
      */
     public function __construct()
     {
         $this->dbLink = $this->connect();
     }
 
-    public function connect(){
+    /**
+     * @return PDO Returns the PDO connection
+     */
+    public function connect(): PDO{
         try {
             $db = new PDO("mysql:host=$this->host;dbname=$this->db;charset=utf8", $this->user, $this->password);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,6 +29,10 @@ class DB{
         return $db;
     }
 
+    /**
+     * Checking if the $dbLink variable is empty and returning it
+     * @return PDO|null return of the dbLink variable
+     */
     public function getDbLink(): ?PDO{
         if(is_null($this->dbLink)){
             $this->dbLink = $this->connect();
@@ -35,8 +42,8 @@ class DB{
     }
 
     /**
-     * On empêche de laisser d'autres développeurs de cloner l'objet
-     * pour s'assurer qu'on a bel et bien qu'une seule instance de la connexion db.
+     * We prevent letting other developers clone the object
+     * to make sure that we only have one instance of the db connection.
      */
     public function __clone() {}
 }

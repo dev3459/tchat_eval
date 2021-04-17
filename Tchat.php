@@ -2,12 +2,15 @@
 session_start();
 require_once './Classes/DB.php';
 
+//Creating a $task variable with a default value of list
 $task = "list";
 
+//If the GET of task exists then we save the GET task in the variable $task
 if(isset($_GET['task'])){
     $task = $_GET['task'];
 }
 
+//If the $task variable has a precise value then it calls the corresponding function otherwise it displays the messages
 if($task === "write"){
     postMessage();
 }elseif($task === "connexion") {
@@ -18,6 +21,7 @@ if($task === "write"){
     getMessages();
 }
 
+//Function that displays the messages that are stored in the database
 function getMessages(){
     $db = new DB();
     $request = $db->getDbLink();
@@ -26,6 +30,7 @@ function getMessages(){
     echo json_encode($messages);
 }
 
+//Function to record a message in the DB
 function postMessage(){
     if(!isset($_POST['user_fk']) || !isset($_POST['message'])){
         echo json_encode(["status" => "error", "message" => "Merci de renseigner les champs obligatoire"]);
@@ -42,10 +47,9 @@ function postMessage(){
         ":message" => $message,
         ":user_fk" => $user_fk
     ]);
-
-    echo json_encode(["status" => "success"]);
 }
 
+//Function to display a connection message
 function MessageConnexion(){
     $db = new DB();
     $request = $db->getDbLink();
@@ -59,6 +63,7 @@ function MessageConnexion(){
     header('Location: ./index.php');
 }
 
+//Function to display a disconnection message
 function MessageDeconnexion(){
     $db = new DB();
     $request = $db->getDbLink();

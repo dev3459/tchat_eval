@@ -1,11 +1,11 @@
 let container = document.getElementById('contains');
 
-//Formulaire de connexion
+//Login form
 let pseudo = document.getElementById('pseudo');
 let password = document.getElementById('password');
 let btnConnexion = document.getElementById('buttonValidateC');
 
-//Formulaire d'inscription
+//Registration Form
 let pseudoI = document.getElementById('pseudoInscript');
 let emailI = document.getElementById('emailInscript');
 let passwordI = document.getElementById('passwordInscript');
@@ -15,6 +15,9 @@ let acceptCB = document.getElementById('acceptCheckBox');
 
 let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
+/**
+ * Event when the login button is clicked and verification of the login form fields
+ */
 btnConnexion.addEventListener("click", function(e){
     if(pseudo.value === "" || password.value === ""){
         e.preventDefault();
@@ -25,6 +28,9 @@ btnConnexion.addEventListener("click", function(e){
     }
 });
 
+/**
+ * Event when clicking on the registration button and verification of the fields of the registration form
+ */
 btnInscriptionI.addEventListener('click', function (e){
     if(acceptCB.checked === true){
         if(pseudoI.value === "" || passwordI.value === "" || passwordConfirmI.value === "" || emailI.value === ""){
@@ -49,9 +55,9 @@ btnInscriptionI.addEventListener('click', function (e){
 });
 
 /**
- * Fontion qui permet de créer des messages d'erreur ou de succès !
- * @param message = Contenu du message à afficher
- * @param type = success OU error
+ * Fontion which allows you to create error or success messages!
+ * @param message = Message content to display
+ * @param type = success or error
  */
 function message(message, type = "error"){
     let div = document.createElement("div");
@@ -64,7 +70,7 @@ function message(message, type = "error"){
     slideUp(div.id, type);
 }
 
-//On ajoute l'animation slideUp à l'élément div qui contient le message.
+//We add the slideUp animation to the div element that contains the message.
 function slideUp(id, type){
     let timeout = setTimeout(function (){
         let div = document.getElementById(id);
@@ -74,7 +80,7 @@ function slideUp(id, type){
     }, 3500);
 }
 
-//Fonction qui supprime le message au bout de 4 secondes
+//Function that deletes the message after 4 seconds
 function deleteMessage(id){
     let timeout = setTimeout(function(){
         let div = document.getElementById(id);

@@ -1,9 +1,11 @@
 <?php
 session_start();
 
+//Check if the user exists if he does not exist he is redirected to the connect.php page
 if(!isset($_SESSION['user'])){
     header('Location: ./connect.php');
 }
+
 $pseudo = $_SESSION['user']['pseudo'];
 $id = $_SESSION['user']['id'];
 ?>
@@ -30,13 +32,16 @@ $id = $_SESSION['user']['id'];
             <?php require_once '_partials/menu.php'?>
         </div>
         <div id="tchat">
+            <!-- Post location in div below -->
             <div id="message">
 
             </div>
+
+            <!-- Form to send messages -->
             <div id="writeTchat">
                 <form action="Tchat.php?task=write" method="POST">
                     <input type="text" name="user_fk" id="user_fk" value="<?= $id ?>" hidden>
-                    <input type="text" id="messageTxt" name="message" minlength="3" placeholder="Votre message" required>
+                    <input type="text" id="messageTxt" name="message" minlength="3" placeholder="Écrivez un message ici." required>
                     <button type="submit"><i class="far fa-paper-plane"></i></button>
                 </form>
             </div>

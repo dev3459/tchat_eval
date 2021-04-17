@@ -6,11 +6,21 @@ class Connexion
 {
     private PDO $db;
 
+    /**
+     * Connection to the database through the DB class
+     * @param PDO $database
+     */
     public function __construct(PDO $database)
     {
+        //
         $this->db = $database;
     }
 
+    /**
+     * Function for the user to log in
+     * @param string $pseudo The user's nickname
+     * @param string $password The user's password
+     */
     public function Connect(string $pseudo, string $password)
     {
         session_unset();
@@ -40,7 +50,14 @@ class Connexion
         }
     }
 
-    public function Inscription(string $pseudo, string $email, string $password, string $passwordConfirm, $acceptCondition)
+    /**
+     * Function for the user to register
+     * @param string $pseudo The user's nickname
+     * @param string $email User email
+     * @param string $password The user's password
+     * @param string $passwordConfirm confirmation of the user's password
+     */
+    public function Inscription(string $pseudo, string $email, string $password, string $passwordConfirm)
     {
         session_unset();
         $pseudo = strip_tags($pseudo);
@@ -50,6 +67,7 @@ class Connexion
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             if ($password === $passwordConfirm) {
+                //Check if the username or email already exists
                 $result = $this->db->prepare("SELECT pseudo, email FROM tchat.user WHERE pseudo = :pseudo OR email = :email");
                 $result->bindValue(":pseudo", $pseudo);
                 $result->bindValue(":email", $email);

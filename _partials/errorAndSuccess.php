@@ -1,4 +1,4 @@
-<!----------- Affichage des erreurs et des succès ----------------->
+<!----------- Viewing errors and successes ----------------->
 <?php if(isset($_GET["error"])){ ?>
     <div class="error">
         <span><?= $_GET["error"] ?></span>

@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-//Redirection sur la page index si l'utilisateur est déjà connecté.
+//Redirection to the index page if the user is already logged in.
 if(isset($_SESSION['user'])){
     header('Location: ./index.php');
 }
 
+//User disconnection if the disconnection GET exists is equal to 0604
 if(isset($_GET['deconnexion']) && $_GET['deconnexion'] === "0604"){
     session_unset();
     header('Location: ./connect.php');
@@ -27,7 +28,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion'] === "0604"){
     <div id="contains">
         <?php require_once '_partials/errorAndSuccess.php' ?>
 
-        <!------- Formulaire de connexion ----------->
+        <!------- Login form ----------->
         <form action="_partials/utils.php" method="POST">
             <h2>Connexion</h2>
             <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" minlength="3" maxlength="50" required>
@@ -35,7 +36,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion'] === "0604"){
             <button name="buttonValidateC" id="buttonValidateC">Se connecter</button>
         </form>
 
-        <!------- Formulaire d'inscription ------------->
+        <!------- Registration Form ------------->
         <form action="_partials/utils.php" method="POST">
             <h2>Inscription</h2>
             <input type="text" name="pseudoInscript" id="pseudoInscript" placeholder="Votre pseudo" minlength="3" maxlength="50" required>
