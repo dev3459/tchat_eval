@@ -55,6 +55,20 @@
     width: 50rem;
     padding: 1rem;
     font-size: 2rem;
+    overflow-x: auto;
+}
+
+#tchat #message .message{
+    margin: 1rem;
+}
+
+#tchat #message .message .date{
+    font-weight: bold;
+}
+
+#tchat #message .message .author{
+    font-weight: bold;
+    color: blue;
 }
 
 #tchat #writeTchat{

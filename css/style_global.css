@@ -14,3 +14,58 @@ body {
     font-size: 1.5rem;
 }
 
+.error, .success{
+    position: absolute;
+    top: -5rem;
+    left: 0;
+    width: 100%;
+    background-color: #bd0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    animation: slideDown 0.5s normal both;
+}
+
+.remove{
+    animation: slideUp 0.5s normal both;
+}
+
+.success{
+    background-color: #004000;
+}
+
+.error span, .success span{
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.error a, .success a{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+@keyframes slideDown {
+    0%{
+        top: -5rem;
+    }
+
+    100%{
+        top: 0;
+    }
+}
+
+@keyframes slideUp {
+    0%{
+        top: 0;
+    }
+
+    100%{
+        top: -5rem;
+    }
+}
