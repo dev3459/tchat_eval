@@ -46,6 +46,18 @@ btnInscriptionI.addEventListener('click', function (e){
             }else if(pseudoI.value.length < 3 || pseudoI.value.length > 50 || passwordI.value.length < 6 || passwordI.value.length > 60 || passwordConfirmI.value.length < 6 || passwordConfirmI.value.length > 60){
                 e.preventDefault();
                 message("Votre pseudo ou votre mot de passe ne comporte pas le nombre de caractères requis !");
+            }else if(passwordI.value.search(/[0-9]/) === -1 || passwordConfirmI.value.search(/[0-9]/) === -1){
+                e.preventDefault();
+                message("Merci de renseigner au moins un chiffre");
+            }else if(passwordI.value.search(/[A-Z]/) === -1 || passwordConfirmI.value.search(/[A-Z]/) === -1){
+                e.preventDefault();
+                message("Merci de renseigner au moins une lettre en majuscule");
+            }else if(passwordI.value.search(/[a-z]/) === -1 || passwordConfirmI.value.search(/[a-z]/) === -1){
+                e.preventDefault();
+                message("Merci de renseigner au moins une lettre en minuscule");
+            }else if(passwordI.value.search(/[$@/\]\[!%*\\#&]/) === -1 || passwordConfirmI.value.search(/[$@/\]\[!%*\\#&]/) === -1){
+                e.preventDefault();
+                message("Merci de renseigner au moins un caractère spécial ($@/][!%*\\#&)");
             }
         }
     }else{
