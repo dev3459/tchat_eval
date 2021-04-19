@@ -25,7 +25,7 @@ if($task === "write"){
 function getMessages(){
     $db = new DB();
     $request = $db->getDbLink();
-    $resultats = $request->query("SELECT message.date_publish, user.pseudo, message.message FROM tchat.message, tchat.user WHERE message.user_fk = user.id ORDER BY date_publish DESC LIMIT 20");
+    $resultats = $request->query("SELECT message.date_publish, user.pseudo, message.message FROM message, user WHERE message.user_fk = user.id ORDER BY date_publish DESC LIMIT 20");
     $messages = $resultats->fetchAll();
     echo json_encode($messages);
 }
@@ -42,7 +42,7 @@ function postMessage(){
 
     $db = new DB();
     $request = $db->getDbLink();
-    $query = $request->prepare("INSERT INTO tchat.message SET message = :message, user_fk = :user_fk");
+    $query = $request->prepare("INSERT INTO message SET message = :message, user_fk = :user_fk");
     $query->execute([
         ":message" => $message,
         ":user_fk" => $user_fk
@@ -54,7 +54,7 @@ function MessageConnexion(){
     $db = new DB();
     $request = $db->getDbLink();
 
-    $query = $request->prepare("INSERT INTO tchat.message SET message = :message, user_fk = :user_fk");
+    $query = $request->prepare("INSERT INTO message SET message = :message, user_fk = :user_fk");
     $query->execute([
         ":message" => "L'utilisateur " . $_SESSION['user']['pseudo'] . " viens de se connecter !",
         ":user_fk" => 1
@@ -68,7 +68,7 @@ function MessageDeconnexion(){
     $db = new DB();
     $request = $db->getDbLink();
 
-    $query = $request->prepare("INSERT INTO tchat.message SET message = :message, user_fk = :user_fk");
+    $query = $request->prepare("INSERT INTO message SET message = :message, user_fk = :user_fk");
     $query->execute([
         ":message" => "L'utilisateur " . $_SESSION['user']['pseudo'] . " viens de se déconnecter !",
         ":user_fk" => 1

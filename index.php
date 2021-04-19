@@ -33,10 +33,7 @@ $id = $_SESSION['user']['id'];
         </div>
         <div id="tchat">
             <!-- Post location in div below -->
-            <div id="message">
-
-            </div>
-
+            <div id="message"></div>
             <!-- Form to send messages -->
             <div id="writeTchat">
                 <form action="Tchat.php?task=write" method="POST">

@@ -1,9 +1,14 @@
 /* Design of the index.php page */
+hr{
+    margin-top: 1rem;
+    border: 1px dashed blue;
+}
+
 #contains{
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 #contains #top {
@@ -52,11 +57,13 @@
 
 #tchat #message{
     border: 2px solid blue;
+    border-bottom: none;
     height: 60rem;
     width: 50rem;
     padding: 1rem;
     font-size: 2rem;
     overflow-x: auto;
+    border-radius: 10px 10px 0 0;
 }
 
 #tchat #message .message{
@@ -87,6 +94,8 @@
     padding-left: 1rem;
     outline: none;
     border: blue 2px solid;
+    border-right: none;
+    border-radius: 0 0 0 10px;
 }
 
 #tchat #writeTchat form button {
@@ -98,6 +107,7 @@
     color: white;
     border: 2px solid blue;
     transition: all 0.2s linear;
+    border-radius: 0 0 10px 0;
 }
 
 #tchat #writeTchat form button:hover{

@@ -6,19 +6,20 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    background-color: #ddd;
 }
 
 #contains form{
+    background-color: whitesmoke;
     margin: 1rem;
-    min-width: 20rem;
     width: 40%;
-    height: 40vh;
-    border: 1px solid blue;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     padding: 1rem;
-    flex-wrap: wrap;
+    box-shadow: 0 0 8px 4px black;
+    border-radius: 5px;
+    height: 40rem;
 }
 
 #contains form h2{
@@ -30,6 +31,7 @@
 
 #contains form input{
     padding: 0.4rem;
+    margin: 1rem;
 }
 
 #contains form button {
@@ -45,4 +47,16 @@
 #contains form button:hover{
     color: blue;
     background-color: rgba(128, 128, 128, 0.49);
+}
+
+@media screen and (max-width: 500px){
+    #contains{
+        align-items: initial;
+        height: 100vh;
+    }
+
+    #contains form{
+        width: 100%;
+        height: auto;
+    }
 }

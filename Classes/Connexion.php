@@ -27,7 +27,7 @@ class Connexion
         $pseudo = strip_tags($pseudo);
         $password = strip_tags($password);
 
-        $result = $this->db->prepare("SELECT id, pseudo, email, password FROM tchat.user WHERE pseudo = :pseudo");
+        $result = $this->db->prepare("SELECT id, pseudo, email, password FROM user WHERE pseudo = :pseudo");
         $result->bindValue(":pseudo", $pseudo);
         $result->execute();
 
@@ -68,7 +68,7 @@ class Connexion
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             if ($password === $passwordConfirm) {
                 //Check if the username or email already exists
-                $result = $this->db->prepare("SELECT pseudo, email FROM tchat.user WHERE pseudo = :pseudo OR email = :email");
+                $result = $this->db->prepare("SELECT pseudo, email FROM user WHERE pseudo = :pseudo OR email = :email");
                 $result->bindValue(":pseudo", $pseudo);
                 $result->bindValue(":email", $email);
                 $result->execute();
@@ -76,7 +76,7 @@ class Connexion
                 if ($result->rowCount() > 0) {
                     header("Location: ../connect.php?error=Le pseudo ou l'email est déjà utilisé");
                 } else {
-                    $result = $this->db->prepare("INSERT INTO tchat.user (pseudo, email, password, acceptCondition) VALUES (:pseudo, :email, :password, :acceptCondition)");
+                    $result = $this->db->prepare("INSERT INTO user (pseudo, email, password, acceptCondition) VALUES (:pseudo, :email, :password, :acceptCondition)");
                     $result->bindValue(":pseudo", $pseudo);
                     $result->bindValue(":email", $email);
                     $result->bindValue(":password", password_hash($password, PASSWORD_DEFAULT));
