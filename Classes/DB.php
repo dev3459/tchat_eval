@@ -2,8 +2,8 @@
 class DB{
     private string $host = 'localhost';
     private string $db = 'tchat';
-    private string $user = 'root';
-    private string $password = '';
+    private string $user = 'dev';
+    private string $password = 'dev';
     private ?PDO $dbLink;
 
     /**
